@@ -1,4 +1,4 @@
-package es.santander.ascender.ejerc002;
+package es.santander.ascender.ejerc002.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
