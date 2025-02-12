@@ -1,4 +1,4 @@
-package es.santander.ascender.ejerc002;
+package es.santander.ascender.ejerc002.repository;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import es.santander.ascender.ejerc002.model.Dato;
-import es.santander.ascender.ejerc002.repository.DatoRepository;
 
 @SpringBootTest
 public class DatoRepositoryTest {

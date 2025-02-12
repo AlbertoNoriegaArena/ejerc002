@@ -1,6 +1,9 @@
 package es.santander.ascender.ejerc002.repository;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +35,55 @@ public class ColumnaRepositoryTest {
                 repository
                         .findById(columna.getId())
                         .isPresent());
+    }
 
+    @Test
+    public void delete() {
+
+        Columna columna = new Columna();
+        columna.setA2(6);
+        columna.setA1(10L);
+        repository.save(columna);
+
+        assertTrue(repository.existsById(columna.getId()));
+
+        // Borrar registro y comprobar que fue borrado
+        repository.deleteById(columna.getId());
+
+        assertFalse(repository.existsById(columna.getId()));
+    }
+
+    @Test
+    public void view() {
+        
+        Columna columna = new Columna();
+        columna.setA2(8);
+        columna.setA1(30L);
+        repository.save(columna);
+
+        Optional<Columna> registro = repository.findById(columna.getId());
+
+        assertTrue(registro.isPresent());
+        assertTrue(registro.get().getA1().equals(30L));
+    }
+
+    @Test
+    public void update() {
+    
+        Columna columna = new Columna();
+        columna.setA2(7);
+        columna.setA1(20L);
+        repository.save(columna);
+
+        assertTrue(repository.existsById(columna.getId()));
+
+        columna.setA2(10);
+        repository.save(columna);
+
+        Optional<Columna> updatedColumna = repository.findById(columna.getId());
+
+        assertTrue(updatedColumna.isPresent());
+        assertTrue(updatedColumna.get().getA2() == 10);
     }
 
 }
