@@ -1,11 +1,9 @@
 package es.santander.ascender.ejerc002.repository;
 
-import org.springframework.data.repository.ListCrudRepository;
-import org.springframework.data.repository.ListPagingAndSortingRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import es.santander.ascender.ejerc002.model.Columna;
 
-public interface ColumnaRepository
-        extends ListCrudRepository<Columna, Long>, ListPagingAndSortingRepository<Columna, Long> {
+public interface ColumnaRepository extends JpaRepository<Columna, Long> {
 
 }
