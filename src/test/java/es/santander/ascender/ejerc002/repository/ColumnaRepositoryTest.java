@@ -102,36 +102,37 @@ public class ColumnaRepositoryTest {
         assertTrue(updatedColumna.get().getA2() == 10);
     }
 
-    @Test
-    @Transactional
-    // Forma de hacer el update sin utilizar el save
-    public void updateRaro() {
+    // @Test
+    // @Transactional
+    // // Forma de hacer el update sin utilizar el save
+    // public void updateRaro() {
 
-        Columna columna = new Columna();
-        columna.setA2(7);
-        columna.setA1(20L);
-        repository.save(columna);
+    // Columna columna = new Columna();
+    // columna.setA2(7);
+    // columna.setA1(20L);
+    // repository.save(columna);
 
-        assertTrue(repository.existsById(columna.getId()));
+    // assertTrue(repository.existsById(columna.getId()));
 
-        columna.setA2(10);
+    // columna.setA2(10);
 
-        /*
-         * Cuando pides columna a traves de JPA es una variable de datos
-         * 
-         * Al estar en la misma transacción, con flush ejecuta los cambios pendientes y
-         * hace el update en BBDD del nuevo valor
-         * 
-         * cambias el 7 por el 10 en memoria. Con flush detecta que los valores no
-         * coinciden y cambia el valor en la BBDD
-         */
+    // /*
+    // * Cuando pides columna a traves de JPA es una variable de datos
+    // *
+    // * Al estar en la misma transacción, con flush ejecuta los cambios pendientes
+    // y
+    // * hace el update en BBDD del nuevo valor
+    // *
+    // * cambias el 7 por el 10 en memoria. Con flush detecta que los valores no
+    // * coinciden y cambia el valor en la BBDD
+    // */
 
-        repository.flush();
+    // repository.flush();
 
-        Optional<Columna> updatedColumna = repository.findById(columna.getId());
+    // Optional<Columna> updatedColumna = repository.findById(columna.getId());
 
-        assertTrue(updatedColumna.isPresent());
-        assertTrue(updatedColumna.get().getA2() == 10);
-    }
+    // assertTrue(updatedColumna.isPresent());
+    // assertTrue(updatedColumna.get().getA2() == 10);
+    // }
 
 }

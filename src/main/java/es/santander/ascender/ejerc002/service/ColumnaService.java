@@ -36,7 +36,7 @@ public class ColumnaService {
     }
 
     // Listar
-    public List<Columna> read() {
+    public List<Columna> list() {
         return repository.findAll();
     }
 
